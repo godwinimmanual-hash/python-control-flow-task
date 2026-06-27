@@ -1,36 +1,37 @@
 # main.py
 
-from utils import add_item, remove_item, display_items
+from student import Student
+from file_handler import save_student, view_students
 
+while True:
 
-def main():
-    items = []
+    print("\n===== Student Management System =====")
+    print("1. Add Student")
+    print("2. View Students")
+    print("3. Exit")
 
-    while True:
-        print("\n===== LIST MANAGER =====")
-        print("1. Add Item")
-        print("2. View Items")
-        print("3. Delete Item")
-        print("4. Exit")
+    choice = input("Enter your choice: ")
 
-        choice = input("Enter your choice (1-4): ").strip()
+    if choice == "1":
 
-        if choice == "1":
-            add_item(items)
+        roll = input("Enter Roll Number: ")
+        name = input("Enter Name: ")
+        marks = input("Enter Marks: ")
 
-        elif choice == "2":
-            display_items(items)
+        student = Student(roll, name, marks)
 
-        elif choice == "3":
-            remove_item(items)
+        save_student(student)
 
-        elif choice == "4":
-            print("Thank you for using List Manager!")
-            break
+        print("Student added successfully!")
 
-        else:
-            print("Invalid choice! Please enter a number between 1 and 4.")
+    elif choice == "2":
 
+        view_students()
 
-if __name__ == "__main__":
-    main()
+    elif choice == "3":
+
+        print("Thank you!")
+        break
+
+    else:
+        print("Invalid Choice.")
